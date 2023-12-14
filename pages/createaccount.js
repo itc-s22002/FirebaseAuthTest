@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import auth from '../FirebaseConfig';
 import { useRouter } from 'next/router';
 
-const RegisterPage = () => {
+const AddUserPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
@@ -13,7 +13,7 @@ const RegisterPage = () => {
 
         try {
             // FirebaseのcreateUserWithEmailAndPasswordメソッドを使用してユーザーを登録
-            await createUserWithEmailAndPassword(auth, email, password, userId);
+            await createUserWithEmailAndPassword(auth, email, password);
             router.push('/login'); // 登録成功後、ログインページにリダイレクト
         } catch (error) {
             console.error('Registration error:', error);
@@ -38,4 +38,4 @@ const RegisterPage = () => {
     );
 };
 
-export default RegisterPage;
+export default AddUserPage;

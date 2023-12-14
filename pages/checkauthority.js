@@ -3,7 +3,8 @@ import { onAuthStateChanged} from 'firebase/auth';
 import auth from '../FirebaseConfig';
 import { useRouter } from 'next/router';
 
-const UserInfoPage = () => {
+const CheckAuthorityPage = () => {
+    const adminId = "nLgmYevMrWe4BDQoXHLn1bW7udI3"
     const [user, setUser] = useState(null);
     const router = useRouter();
 
@@ -23,20 +24,32 @@ const UserInfoPage = () => {
         return () => unsubscribe();
     }, []);
 
+
     if (user) {
-        return (
-            <div>
+        if (user.uid === adminId){
+            //adminユーザーの場合
+            return (
+                <div>
+                    <h1>
+                        ユーザー情報
+                    </h1>
+                    <p>Email:{user.email}</p>
+                    <p>User ID: {user.uid}</p>
+                </div>
+            );
+        }else {
+            //adminユーザー出ない場合
+            return (
                 <h1>
-                    ユーザー情報
+                    権限がありません
                 </h1>
-                <p>Email:{user.email}</p>
-                <p>User ID: {user.uid}</p>
-            </div>
-        );
+            )
+        }
+
     } else {
         // ユーザーがログインしていない場合の表示
         return <p>Loading...</p>;
     }
 };
 
-export default UserInfoPage;
+export default CheckAuthorityPage;
