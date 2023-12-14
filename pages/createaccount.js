@@ -22,17 +22,21 @@ const AddUserPage = () => {
 
     return (
         <div>
-            <h1>Register Page</h1>
+            <h1>ユーザー登録</h1>
             <form onSubmit={handleRegister}>
-                <label>
-                    Email:
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </label>
-                <label>
-                    Password:
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                </label>
-                <button type="submit">Register</button>
+                <div>
+                    <label>
+                        Email:
+                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Password:
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </label>
+                </div>
+                <button type="submit">登録</button>
             </form>
         </div>
     );
