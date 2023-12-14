@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import auth from '../FirebaseConfig'; // firebase.js のパスを指定
+import auth from '../FirebaseConfig';
 import { useRouter } from 'next/router';
 
 const LoginPage = () => {
@@ -14,7 +14,7 @@ const LoginPage = () => {
         try {
             // FirebaseのsignInWithEmailAndPasswordメソッドを使用してログイン
             await signInWithEmailAndPassword(auth, email, password);
-            // router.push('/dashboard'); // ログイン成功後、ダッシュボードページにリダイレクト
+            // router.push('/dashboard'); // ログイン成功後、ダッシュボードページに移動
             console.log("Ok")
         } catch (error) {
             console.error('Login error:', error);
