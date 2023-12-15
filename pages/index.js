@@ -1,8 +1,9 @@
+import styles from '../styles/blackbood.module.css'
 const  Home = () => {
   return (
-    <>
-     Hello
-    </>
+    <div className={styles.kokuban}>
+            Hello
+    </div>
   )
 }
 
